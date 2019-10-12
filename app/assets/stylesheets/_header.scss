@@ -1,0 +1,11 @@
+.global-nav {
+  background-color: #ff9858;
+
+  &-logo {
+    color: #fff;
+  }
+
+  &-list {
+    list-style: none;
+  }
+}
