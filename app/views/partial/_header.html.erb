@@ -1,15 +1,27 @@
 <header>
-  <nav class="navbar global-nav">
-    <div class="container">
-      <%= link_to 'LOGO', root_path, class: "navbar-brand global-nav-logo h1" %>
-      <ul class="global-nav-list d-flex justify-content-between">
-        <% if user_signed_in? %>
-          <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete %></li>
-        <% else %>
-          <li><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-success' %></li>
-          <li><%= link_to 'アカウント作成', new_user_registration_path, class: 'btn btn-primary' %></li>
-        <% end %>
-      </ul> 
+  <nav class="global-nav navbar navbar-expand-lg">
+    <div class="container justify-content-between">
+        <a class="navbar-brand global-nav-logo" href="#">LOGO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+      <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <%= link_to current_user.name, "#", class: "nav-link dropdown-toggle text-white", id: "navbarDropdown", data: { toggle: :dropdown, role: :button } %>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <div class="dropdown-divider"></div>
+              <%= link_to "ログアウト", destroy_user_session_path, class: "text-danger text-center d-block", method: :delete %>
+            </div>
+          </li>
+          <% else %>
+            <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light h-sign-in-btn" %></li>
+            <li><%= link_to "アカウント作成", new_user_registration_path, class: "btn btn-outline-dark h-sign-up-btn" %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </nav>
 </header>

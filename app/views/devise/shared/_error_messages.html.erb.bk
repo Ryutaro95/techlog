@@ -1,17 +1,22 @@
-<% if resource.errors.any? %>
-  <div id="error_explanation">
-    <h2>
-      <%= I18n.t("errors.messages.not_saved",
-                 count: resource.errors.count,
-                 resource: resource.class.model_name.human.downcase)
-       %>
-    </h2>
-        <div class="alert alert-denger">
-    <ul>
-      <% resource.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-      <% end %>
-    </ul>
+  <nav class="navbar navbar-expand-lg global-nav">
+    <div class="container">
+      <%= link_to 'LOGO', root_path, class: "navbar-brand global-nav-logo h1" %>
+      <ul class="global-nav-list navbar-nav d-flex justify-content-between">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown nav-link">
+            <%= link_to current_user.name, class: "dropdown-toggle", id: "navbarDropdown", data: { toggle: :dropdown, role: :button } %>
+          </li>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Action</a>
+          <a class="dropdown-item" href="#">Another action</a>
+          <div class="dropdown-divider"></div>
+          <li><%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete %></li>
         </div>
-  </div>
-<% end %>
+        <% else %>
+          <li><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-success' %></li>
+          <li><%= link_to 'アカウント作成', new_user_registration_path, class: 'btn btn-primary' %></li>
+        <% end %>
+
+      </ul> 
+    </div>
+  </nav>
