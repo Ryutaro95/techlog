@@ -1,0 +1,25 @@
+.sign-in-page,
+.sign-up-page {
+  flex-direction: column;
+
+  .sign-in-form,
+  .sign-up-form {
+    width: 500px;
+    
+    .form-group {
+      padding-top: 15px;
+      text-align: left;
+    }
+
+    .form-control {
+      padding: 15px;
+      background: #f6f8fa;
+      font-size: 20px;
+    }
+
+    .sign-up-btn {
+      padding-left: 25px;
+      padding-right: 25px;
+    }
+  }
+}

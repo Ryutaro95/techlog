@@ -11,9 +11,11 @@
 
   <body>
     <%= render 'partial/header' %>
-  
-    <p><%= notice %></p>
-    <p><%= alert %></p>
-    <%= yield %>
+    
+    <%= render 'partial/alert_messages' %>
+    
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>
