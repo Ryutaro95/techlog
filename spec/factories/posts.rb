@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :post do
-    title { "MyText" }
-    body { "MyString" }
-    user { nil }
+    title { "ブログタイトルです" }
+    body { "ブログ記事本文です" }
+    user { FactoryBot.create(:user) }
   end
 end
