@@ -1,0 +1,14 @@
+<div class="post-list-container container">
+  <ul>
+    <% @posts.each do |post| %>
+      <div class="post-list-content">
+        <li><%= link_to post.title, post, class: "h3" %></li>
+        <p>by <%= post.user.name %></p>
+      </div>
+    <% end %>
+  </ul>
+</div>
+
+<div class="paginate">
+  <%= paginate @posts %>
+</div>

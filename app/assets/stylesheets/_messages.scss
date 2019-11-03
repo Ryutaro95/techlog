@@ -1,0 +1,12 @@
+// バリデーションエラー
+.error {
+  &-messages {
+
+    li {
+      margin-bottom: 10px;
+    }
+    li:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

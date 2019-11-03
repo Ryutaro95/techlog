@@ -42,6 +42,8 @@ group :development, :test do
   gem 'factory_bot_rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 group :development do
@@ -54,7 +56,7 @@ group :development do
   gem 'spring-commands-rspec'
   gem 'annotate'
   gem 'pry-byebug'
-
+  gem 'rails-flog'
 end
 
 group :test do
@@ -76,3 +78,8 @@ gem 'devise-i18n-views'
 gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'rails-i18n'
+gem 'kaminari'
+gem 'redcarpet'
+gem 'coderay'
+gem 'jquery-turbolinks'
+gem 'font-awesome-sass'

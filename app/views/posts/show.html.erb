@@ -1,0 +1,14 @@
+<div class="show-post">
+  <div class="toc-content">
+    <ol id="toc">
+    </ol>
+  </div>
+  
+  <div class="post-details">
+    <h1 class="post-details-title"><%= @post.title %></h1>
+    <p><%= @post.user.name %></p>
+    <div class="post-body" id="toc-range">
+      <%= markdown(@post.body) %>
+    </div>
+  </div>
+</div>

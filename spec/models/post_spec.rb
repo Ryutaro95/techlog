@@ -40,7 +40,6 @@ RSpec.describe Post, type: :model do
   end
 
   describe "記事投稿機能の文字数制限をテストする" do
-
     context "タイトルが100文字のとき" do
       it "有効な状態であること" do
         post = FactoryBot.build(:post, title: "a" * 100)
