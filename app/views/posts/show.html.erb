@@ -1,3 +1,6 @@
+<%= render 'partial/alert_messages' %>
+
+<%= link_to "test", post_path(anchor: 'comment') %>
 <div class="show-post">
   <div class="toc-content">
     <ol id="toc">
@@ -6,9 +9,23 @@
   
   <div class="post-details">
     <h1 class="post-details-title"><%= @post.title %></h1>
-    <p><%= @post.user.name %></p>
+    <p><%= link_to @post.user.name, user_path(@post.user_id) %>さんが<%= @post.created_at.to_s(:datetime_jp) %>に投稿</p>
+    <% unless @post.created_at == @post.updated_at %>
+      <p><%= @post.updated_at.to_s(:datetime_jp) %>に更新</p>
+    <% end %>
     <div class="post-body" id="toc-range">
       <%= markdown(@post.body) %>
     </div>
   </div>
 </div>
+
+<div id="comments-area">
+  <%= render partial: 'comments/comment_index', locals: { comments: @comments } %>
+</div>
+
+<% if current_user %>
+  <div id="comment-form">
+    <%= render partial: 'comments/comment_form', locals: { post: @post, comment: @comment } %>
+  </div>
+<% end %>
+

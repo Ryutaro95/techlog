@@ -1,9 +1,41 @@
-<p><%= @user.name %></p>
-<p><%= @user.email %></p>
-<p><%= @user.profile %></p>
-
-<% if @user.image.attached? %>
-  <%= image_tag @user.thumbnail %>
-<% end %>
-
-<%= link_to "編集", edit_user_registration_path %>
+<div class="user-show">
+  <div class="user-details">
+    <div class="user-details-content">
+      <% if @user.image.attached? %>
+        <%= image_tag @user.thumbnail, class: "user-details-img" %>
+      <% else %>
+        <%= image_tag 'noimage.png', class: "user-details-img" %>
+      <% end %>
+      <p><i class="fas fa-user"></i> : <%= @user.name %></p>
+      <p><i class="fas fa-envelope"></i> : <%= @user.email %></p>
+      <% if @user.profile %>
+        <div class="user-details-text">
+          <p><%= @user.profile %></p>
+        </div>
+      <% end %>
+      <%= link_to "編集", edit_user_registration_path %>
+    </div>
+  </div>
+  
+  <div class="user-details-posts">
+    <% unless @posts.empty? %>
+      <ul class="post-list-container">
+        <% @posts.each do |post| %>
+          <div class="post-list-content">
+            <li><%= link_to post.title, post, class: "h3" %></li>
+            <p>by:<%= link_to post.user.name, user_path(post.user_id) %></p>
+            <p><%= post.created_at.to_s(:datetime_jp) %>に投稿</p>
+          </div>
+        <% end %>
+      </ul>
+      <%= paginate @posts %>
+    <% else %>
+      <div class="user-details-noposts post-list-container">
+        <p>投稿がありません</p>
+        <%= link_to new_post_path, class: "btn-outline-primary btn" do %>
+          <i class='fas fa-pen'></i> 記事投稿
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

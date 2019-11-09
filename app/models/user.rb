@@ -5,10 +5,11 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
         :recoverable, :rememberable, :validatable
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one_attached :image
 
   def thumbnail
-    return self.image.variant(resize: '200x300')
+    return self.image.variant(resize: '200x200')
   end
 
   validates :name, presence: true, length: { maximum: 20 }

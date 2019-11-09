@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: %i(show destroy)
 
   def index
     @posts = Post.page(params[:page]).per(10).order(updated_at: :desc)
@@ -20,11 +21,20 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by(id: params[:id])
+    @comment = Comment.new
+    @comments = Comment.where(post_id: @post.id).page(params[:page]).per(10).order(created_at: :desc)
+  end
+
+  def destroy
+    
   end
 
   private
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def set_post
+      @post = Post.find_by(id: params[:id])
     end
 end
