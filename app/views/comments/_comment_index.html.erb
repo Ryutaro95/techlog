@@ -1,0 +1,11 @@
+<% comments.each do |comment| %>
+  <%= link_to user_path(comment.user_id) do %>
+    <%= image_tag comment.user.thumbnail %>
+  <% end %>
+  <%= link_to comment.user.name, user_path(comment.user_id) %>
+  <%= comment.comment %>
+
+  <% if comment.user == current_user %>
+    <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, id: "btn-comment-delete", data: { confirm: "削除しますか？" }, remote: true %>
+  <% end %>
+<% end %>

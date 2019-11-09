@@ -1,0 +1,6 @@
+<% if @result %>
+  $("#comments-area").html("<%= j(render partial: 'comment_index', locals: { comments: @comments }) %>");
+  $("textarea").val('');
+<% else %>
+  $("#errors-msg").html("<%= j(render partial: 'shared/error_message', model: @comment) %>");
+<% end %>

@@ -1,0 +1,10 @@
+<%= form_with(model: [post, comment]) do |f| %>
+  <div class="card my-3">
+    <div class="list-group list-group-flush">
+      <div class="form-group mb-0">
+        <%= f.text_area :comment, class: "form-control comment-form", rows: 5 %>
+      </div>
+    </div>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-info" %>
+<% end %>
