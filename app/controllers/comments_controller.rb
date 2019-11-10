@@ -4,10 +4,9 @@ class CommentsController < ApplicationController
     user = current_user
     @comment = user.comments.build(comment_params)
     @comment.post_id = params[:post_id]
-    @comments = Comment.where(post_id: @comment.post_id).page(params[:page]).per(10).order(created_at: :desc)
+    @comments = Comment.where(post_id: @comment.post_id).page(params[:page]).per(5).order(created_at: :desc)
     respond_to do |format|
       if @result = @comment.save
-        format.html
         format.js
       else
         format.js
@@ -17,7 +16,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find_by(id: params[:id])
-    @comments = Comment.where(post_id: @comment.post_id).page(params[:page]).per(10).order(created_at: :desc)
+    @comments = Comment.where(post_id: @comment.post_id).page(params[:page]).per(5).order(created_at: :desc)
     respond_to do |format|
       if @comment.destroy
         format.js

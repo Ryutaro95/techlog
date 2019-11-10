@@ -301,7 +301,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.0.0)
+  bootstrap
   byebug
   capybara (>= 2.15)
   coderay

@@ -22,7 +22,7 @@ class PostsController < ApplicationController
 
   def show
     @comment = Comment.new
-    @comments = Comment.where(post_id: @post.id).page(params[:page]).per(10).order(created_at: :desc)
+    @comments = Comment.where(post_id: @post.id).page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def destroy

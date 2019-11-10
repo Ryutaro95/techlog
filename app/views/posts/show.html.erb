@@ -1,6 +1,5 @@
 <%= render 'partial/alert_messages' %>
 
-<%= link_to "test", post_path(anchor: 'comment') %>
 <div class="show-post">
   <div class="toc-content">
     <ol id="toc">
@@ -19,13 +18,12 @@
   </div>
 </div>
 
-<div id="comments-area">
+<div class="comment-area" id="comments-area">
   <%= render partial: 'comments/comment_index', locals: { comments: @comments } %>
 </div>
 
 <% if current_user %>
-  <div id="comment-form">
+  <div class="comment-form" id="comment-form">
     <%= render partial: 'comments/comment_form', locals: { post: @post, comment: @comment } %>
   </div>
 <% end %>
-

@@ -1,0 +1,67 @@
+// コメント一覧
+.comment-area {
+  width: 90%;
+  margin: auto;
+  margin-top: 3rem;
+
+  .comment-container {
+    width: 70%;
+    margin-left: auto;
+    margin-bottom: 2rem;
+
+    .comment-user {
+      display: flex;
+
+      img {
+        width: 5rem;
+        height: 5rem;
+        object-fit: cover;
+        margin-right: 1rem;
+        border-radius: 50%;
+      }
+
+      .comment-username-time {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        a {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .comment-content {
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background-color: #fff;
+      padding: 15px;
+      margin-top: 1rem;
+    }
+
+    .comment-delete {
+      text-align: right;
+      margin-top: 1rem;
+    }
+  }
+
+  .comment-paginate {
+    width: 70%;
+    margin-left: auto;
+  }
+}
+
+// コメント投稿フォーム
+.comment-form {
+  width: 90%;
+  margin: auto;
+
+  .comment-form-container {
+    width: 70%;
+    margin-left: auto;
+
+    .btn-comment-post {
+      margin-top: 1rem;
+    }
+  }
+}

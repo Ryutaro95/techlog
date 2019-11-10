@@ -1,11 +1,25 @@
 <% comments.each do |comment| %>
-  <%= link_to user_path(comment.user_id) do %>
-    <%= image_tag comment.user.thumbnail %>
-  <% end %>
-  <%= link_to comment.user.name, user_path(comment.user_id) %>
-  <%= comment.comment %>
+  <div class="comment-container">
+    <div class="comment-user">
+      <%= link_to user_path(comment.user_id) do %>
+        <%= image_tag comment.user.thumbnail %>
+      <% end %>
+      <div class="comment-username-time">
+        <%= link_to comment.user.name, user_path(comment.user_id) %>
+        <time><%= comment.created_at.to_s(:datetime_jp) %></time>
+      </div>
+    </div>
+    <div class="comment-content">
+      <p><%= simple_format(comment.comment) %></p>
+    </div>
+    <% if comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-comment-delete btn-outline-danger", id: "btn-comment-delete", data: { confirm: "削除しますか？" }, remote: true %>
+      </div>
+    <% end %>
 
-  <% if comment.user == current_user %>
-    <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, id: "btn-comment-delete", data: { confirm: "削除しますか？" }, remote: true %>
-  <% end %>
+  </div><!-- comment-container -->
 <% end %>
+<div class="paginate comment-paginate">
+  <%= paginate @comments %>
+</div>
