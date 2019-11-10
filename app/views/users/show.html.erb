@@ -17,14 +17,14 @@
     </div>
   </div>
   
+
   <div class="user-details-posts">
     <% unless @posts.empty? %>
       <ul class="post-list-container">
         <% @posts.each do |post| %>
           <div class="post-list-content">
             <li><%= link_to post.title, post, class: "h3" %></li>
-            <p>by:<%= link_to post.user.name, user_path(post.user_id) %></p>
-            <p><%= post.created_at.to_s(:datetime_jp) %>に投稿</p>
+            <p><%= post.created_at.to_s(:date_jp) %>に投稿</p>
           </div>
         <% end %>
       </ul>

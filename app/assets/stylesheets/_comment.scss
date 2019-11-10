@@ -4,6 +4,11 @@
   margin: auto;
   margin-top: 3rem;
 
+  .comment-index {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
   .comment-container {
     width: 70%;
     margin-left: auto;
