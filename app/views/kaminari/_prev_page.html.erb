@@ -7,5 +7,5 @@
     remote:        data-remote
 -%>
 <span class="prev">
-  <%= link_to_unless current_page.first?, t('views.pagination.previous').html_safe, url, rel: 'prev',class: 'page-link', remote: remote %>
+  <%= link_to_unless current_page.first?, t('views.pagination.previous').html_safe, url, data: { disable_with: "移動中" }, rel: 'prev',class: 'page-link', remote: remote %>
 </span>

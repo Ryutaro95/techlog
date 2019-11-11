@@ -4,6 +4,6 @@
   </li>
 <% else %>
   <li class="page-item">
-    <%= link_to page, url, remote: remote, rel: page.rel, class: 'page-link' %>
+    <%= link_to page, url, remote: remote, rel: page.rel, data: { disable_with: "移動中" }, class: 'page-link' %>
   </li>
 <% end %>

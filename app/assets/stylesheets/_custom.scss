@@ -83,6 +83,7 @@ body {
   background-color: #fff;
 
   .post-list-content {
+    align-items: center;
     border-bottom: 1px solid rgb(201, 201, 201);
     padding: 1rem;
     margin-left: 1rem;
@@ -91,6 +92,33 @@ body {
   .post-list-content:last-child {
     border-bottom: none;
   }
+
+  .posts-content {
+    display: flex;
+  }
+
+  .posts-user-imgs {
+    display: flex;
+    align-items: center;
+  }
+
+  .user-show-posts {
+    display: flex;
+    justify-content: space-between;
+
+    & a:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+.user-details-img {
+  width: 5rem;
+  height: 5rem;
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 3rem auto;
+  display: block;
+  margin-right: 1rem;
 }
 
 .paginate {
@@ -204,11 +232,6 @@ body {
 
     .user-details-content {
       width: 70%;
-
-      // & p {
-      //   border-bottom:1px solid rgb(211, 211, 211);
-      //   padding-bottom: 1rem;
-      // }
     }
 
     &-img {

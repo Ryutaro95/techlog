@@ -3,7 +3,11 @@
     <div class="comment-container">
       <div class="comment-user">
         <%= link_to user_path(comment.user_id) do %>
-          <%= image_tag comment.user.thumbnail %>
+          <% if comment.user.image.attached? %>
+            <%= image_tag comment.user.thumbnail %>
+          <% else %>
+            <%= image_tag 'noimage.png' %>
+          <% end %>
         <% end %>
         <div class="comment-username-time">
           <%= link_to comment.user.name, user_path(comment.user_id) %>
@@ -15,7 +19,7 @@
       </div>
       <% if comment.user == current_user %>
         <div class="comment-delete">
-          <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-comment-delete btn-outline-danger", id: "btn-comment-delete", data: { confirm: "削除しますか？" }, remote: true %>
+          <%= link_to "削除", post_comment_path(comment.post_id, comment.id), method: :delete, class: "btn btn-comment-delete btn-outline-danger", id: "btn-comment-delete", data: { confirm: "コメントを削除しますか？" }, remote: true %>
         </div>
       <% end %>
     </div><!-- comment-container -->

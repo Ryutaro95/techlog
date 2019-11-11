@@ -22,9 +22,17 @@
     <% unless @posts.empty? %>
       <ul class="post-list-container">
         <% @posts.each do |post| %>
-          <div class="post-list-content">
-            <li><%= link_to post.title, post, class: "h3" %></li>
-            <p><%= post.created_at.to_s(:date_jp) %>に投稿</p>
+          <div class="post-list-content user-show-posts">
+            <div class="post-list-item">
+              <li><%= link_to post.title, post, class: "h3" %></li>
+              <p><%= post.created_at.to_s(:date_jp) %>に投稿</p>
+            </div>
+            <div class="user-posts-btns">
+              <% if current_user == @user %>
+                <%= link_to "編集", edit_post_path, class: "btn btn-outline-success" %>
+                <%= link_to "削除", post_path(post.id), class: "btn btn-outline-danger", method: :delete, data: { confirm: "「#{post.title}」を削除してよろしいですか？" } %>
+              <% end %>
+            </div>
           </div>
         <% end %>
       </ul>

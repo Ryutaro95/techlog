@@ -61,12 +61,28 @@
   width: 90%;
   margin: auto;
 
+  .comment-form-text {
+    display: flex;
+
+    & p:last-child {
+      margin-left: 2rem;
+      font-size: 14px;
+      color: #aaa;
+    }
+  }
+
   .comment-form-container {
     width: 70%;
     margin-left: auto;
 
     .btn-comment-post {
       margin-top: 1rem;
+    }
+
+    .comment-form-btn-counter {
+      display: flex;
+      justify-content: space-between;
+
     }
   }
 }

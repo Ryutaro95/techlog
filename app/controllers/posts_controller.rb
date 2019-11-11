@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i(show destroy)
+  before_action :authenticate_user!, only: %i(new create edit update destroy)
+  before_action :correct_user, only: %i(edit update destroy)
 
   def index
     @posts = Post.page(params[:page]).per(10).order(updated_at: :desc)
@@ -22,20 +23,34 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find(params[:id])
     @comment = Comment.new
     @comments = Comment.where(post_id: @post.id).page(params[:page]).per(5).order(created_at: :desc)
   end
 
+  def edit
+  end
+  
+  def update
+    @post.update(post_params)
+    flash[:notice] = "「#{@post.title}」を更新しました"
+    redirect_to post_path
+  end
+
   def destroy
-    
+    @post.destroy
+    flash[:notice] = "「#{@post.title}」を削除しました"
+    redirect_back fallback_location: root_path
   end
 
   private
+
     def post_params
       params.require(:post).permit(:title, :body)
     end
 
-    def set_post
-      @post = Post.find_by(id: params[:id])
+    def correct_user
+      @post = Post.find(params[:id])
+      redirect_to root_path unless current_user.id == @post.user_id
     end
 end
