@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments, only: %i(create destroy)
   end
+  resources :user_follow_relations, only: %i(create destroy)
 end

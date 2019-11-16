@@ -1,0 +1,17 @@
+.user-follow {
+  
+  img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  a {
+    font-size: 14px;
+  }
+
+  .followings {
+    display: flex;
+    flex-direction: column;
+  }
+}

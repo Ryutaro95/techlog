@@ -229,6 +229,7 @@ body {
     width: 35%;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 
     .user-details-content {
       width: 70%;

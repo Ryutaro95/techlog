@@ -15,9 +15,14 @@
       <% end %>
       <%= link_to "編集", edit_user_registration_path %>
     </div>
-  </div>
-  
 
+    <% if @user.followings %>
+      <%= render partial: 'partial/followings', locals: { user: @user } %>
+    <% end %>
+  </div>
+
+  <%= render partial: 'partial/follow_btn', locals: { user: @user } %>
+  
   <div class="user-details-posts">
     <% unless @posts.empty? %>
       <ul class="post-list-container">
@@ -47,3 +52,6 @@
     <% end %>
   </div>
 </div>
+
+
+<%# フォローワ一覧 %>
