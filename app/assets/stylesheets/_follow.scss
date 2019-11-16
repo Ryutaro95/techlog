@@ -1,5 +1,16 @@
+// フォローボタン
+.follow-btn {
+  margin: 10px auto;
+  width: 70%;
+}
+
+
+// フォロー中ユーザー / フォロワー 一覧
 .user-follow {
-  
+  border-top: 1px solid #bbb;
+  margin-top: 2rem;
+  padding-top: 1rem;
+
   img {
     width: 3rem;
     height: 3rem;
@@ -10,8 +21,40 @@
     font-size: 14px;
   }
 
-  .followings {
+  .follow-tabs {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 2rem;
+
+    .following-tab,
+    .follower-tab {
+      cursor: pointer;
+      padding: 10px 15px;
+    }
+
+    .following-tab.active,
+    .follower-tab.active {
+      background-color: #00adbd;
+      color: #fff;
+      border-radius: 10px;
+    }
+  }
+
+  .following-container,
+  .follower-container {
+    display: none;
+  }
+
+  .following-container.active,
+  .follower-container.active {
+    display: flex;
+  }
+
+  .follow-content {
     display: flex;
     flex-direction: column;
+    width: 5rem;
+    text-align: center;
   }
+
 }

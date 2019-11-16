@@ -23,11 +23,33 @@ $(document).on('turbolinks:load', function() {
   });
 
 
+  // コメント文字数カウント
   $("#input-text").on("keyup", function() {
     let countNum = String($(this).val().length);
     $("#counter").text(countNum + "文字");
   });
 
+
+  // フォロー一覧切り替えタブ
+  var followingTab = $("#following-tab");
+  var followerTab = $("#follower-tab");
+  var followingsContainer = $("#followings-container");
+  var followersContainer = $("#followers-container");
+
+  followingTab.click(function(){
+    followingTab.addClass("active");
+    followerTab.removeClass("active");
+
+    followingsContainer.addClass("active");
+    followersContainer.removeClass("active");
+  });
+  followerTab.click(function(){
+    followerTab.addClass("active");
+    followingTab.removeClass("active");
+  
+    followersContainer.addClass("active");
+    followingsContainer.removeClass("active");
+  });
 
 
 });
