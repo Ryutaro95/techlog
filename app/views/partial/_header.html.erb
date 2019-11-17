@@ -9,7 +9,7 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <% if user_signed_in? %>
-          <%= link_to new_post_path, class: "btn-outline-light btn" do %>
+          <%= link_to new_post_path, class: "btn-outline-light btn posts-new" do %>
             <i class='fas fa-pen'></i> 記事投稿
           <% end %>
           <li class="nav-item dropdown">

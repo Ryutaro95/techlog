@@ -1,7 +1,5 @@
 FactoryBot.define do
   factory :comment do
-    comment { "MyString" }
-    user { nil }
-    post { nil }
+    comment { "ブログ記事のコメント" }
   end
 end

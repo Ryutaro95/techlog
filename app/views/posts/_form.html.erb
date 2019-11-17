@@ -8,11 +8,11 @@
   
     <div class="f-post-body">
       <%= f.label :body, "本文" %>
-      <%= f.text_area :body, class: "f-post-body-input", id: "post-area", rows: "10" %>
+      <%= f.text_area :body, class: "f-post-body-input", id: "post-area", rows: "10", placeholder: "本文" %>
     </div>
   
     <div class="btn-submit-post">
-      <%= button_tag type: "submit", data: { disable_with: "送信中" } do %>
+      <%= button_tag type: "submit", data: { disable_with: "送信中" }, class: "submit-post" do %>
       <i class="fas fa-external-link-alt"></i> 投稿
       <% end %>
     </div>

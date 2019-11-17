@@ -7,9 +7,9 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  has_many :user_follow_relations
+  has_many :user_follow_relations, dependent: :destroy
   has_many :followings, through: :user_follow_relations, source: :follow
-  has_many :reverse_of_user_follow_relations, class_name: 'UserFollowRelation', foreign_key: 'follow_id'
+  has_many :reverse_of_user_follow_relations, class_name: 'UserFollowRelation', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverse_of_user_follow_relations, source: :user
   has_one_attached :image
 
