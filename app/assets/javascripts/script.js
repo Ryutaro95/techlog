@@ -51,5 +51,24 @@ $(document).on('turbolinks:load', function() {
     followingsContainer.removeClass("active");
   });
 
+  var timelineTab = $("#timeline-tab");
+  var mypostsTab = $("#myposts-tab");
+  var myposts = $("#myposts");
+  var followinguserPosts = $("#followinguser-posts");
+
+  timelineTab.click(function(){
+    timelineTab.addClass("active");
+    mypostsTab.removeClass("active");
+
+    followinguserPosts.addClass("active");
+    myposts.removeClass("active");
+  });
+  mypostsTab.click(function(){
+    mypostsTab.addClass("active");
+    timelineTab.removeClass("active");
+
+    myposts.addClass("active");
+    followinguserPosts.removeClass("active");
+  });
 
 });

@@ -23,6 +23,11 @@
             </div>
           </li>
           <% else %>
+            <%= form_with model: User.new, url: new_user_session_path do |f| %>
+              <%= f.hidden_field :email, value: "kantan@user.com" %>
+              <%= f.hidden_field :password, value: "password" %>
+              <%= f.submit "かんたんログイン", class:"btn btn-outline-light mr-2"%>
+            <% end %>
             <li><%= link_to "ログイン", new_user_session_path, class: "btn btn-outline-light h-sign-in-btn" %></li>
             <li><%= link_to "アカウント作成", new_user_registration_path, class: "btn btn-outline-dark h-sign-up-btn" %></li>
           <% end %>

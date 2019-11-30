@@ -1,0 +1,21 @@
+<ul class="following-posts">
+  <% following_posts.each do |post| %>
+    <div class="post-list-content posts-content">
+      <div class="posts-user-imgs">
+        <%= link_to user_path(post.user.id) do %>
+          <% if post.user.image.attached? %>
+            <%= image_tag post.user.thumbnail, class: "user-details-img" %>
+          <% else %>
+            <%= image_tag 'noimage.png', class: "user-details-img" %>
+          <% end %>
+        <% end %>
+      </div>
+      <div class="post-items">
+        <p><%= link_to post.title, post, class: "h3" %></p>
+        <p>by:<%= link_to post.user.name, user_path(post.user_id) %></p>
+        <p><%= post.created_at.to_s(:date_jp) %>に投稿</p>
+      </div>
+    </div>
+  <% end %>
+</ul>
+<%= paginate following_posts %>

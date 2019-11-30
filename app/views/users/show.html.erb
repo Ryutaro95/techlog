@@ -22,7 +22,19 @@
     <% end %>
   </div>
 
-  
-  <%= render partial: 'user_posts', locals: { posts: @posts, user: @user } %>
+
+
+  <div class="us-contents">
+    <div class="us-posts-switch">
+      <div class="us-timeline active" id="timeline-tab">タイムライン</div>
+      <div class="us-myposts" id="myposts-tab"><%= @user.name %>さんの記事</div>
+    </div>
+    <div class="us-my-posts" id="myposts">
+      <%= render partial: 'user_posts', locals: { posts: @posts, user: @user } %>
+    </div>
+    <div class="us-following-posts active" id="followinguser-posts">
+      <%= render partial: 'following_posts', locals: { following_posts: @following_posts, user: @user } %>
+    </div>
+  </div>
   
 </div>

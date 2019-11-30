@@ -1,5 +1,5 @@
 <div class="follow-btn">
-  <% unless current_user == user %>
+  <% if current_user != user && user_signed_in? %>
     <% if current_user.following?(user) %>
       <%= form_with model: current_user.user_follow_relations.find_by(follow_id: user.id), local: true, html: { method: :delete } do |f| %>
         <%= hidden_field_tag :follow_id, user.id %>
