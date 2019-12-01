@@ -13,7 +13,14 @@
       <div class="post-items">
         <p><%= link_to post.title, post, class: "h3" %></p>
         <p>by:<%= link_to post.user.name, user_path(post.user_id) %></p>
-        <p><%= post.created_at.to_s(:date_jp) %>に投稿</p>
+        <p>
+          <%= post.created_at.to_s(:date_jp) %>に投稿
+          <% if post.likes_count %>
+            <span>
+              <i class="fas fa-thumbs-up"></i><%= post.likes_count %>
+            </span>
+          <% end %>
+        </p>
       </div>
     </div>
   <% end %>

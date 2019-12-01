@@ -3,6 +3,8 @@
     <ol id="toc">
     </ol>
   </div>
+
+  
   
   <div class="post-details">
     <h1 class="post-details-title"><%= @post.title %></h1>
@@ -10,6 +12,9 @@
     <% unless @post.created_at == @post.updated_at %>
       <p><%= @post.updated_at.to_s(:date_jp) %>に更新</p>
     <% end %>
+    <div id="post-<%= @post.id %>">
+      <%= render partial: 'likes/like', locals: { post: @post, like_count: @like_count } %>
+    </div>
     <div class="post-body" id="toc-range">
       <%= markdown(@post.body) %>
     </div>
