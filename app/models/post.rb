@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :like_users, through: :likes, source: :user
+  has_many :stocks, dependent: :destroy
+  has_many :stock_users, through: :stocks, source: :user
 
   validates :title, presence: true, length: { maximum: 100 }
   validates :body, presence: true, length: { maximum: 10000 }
@@ -19,4 +21,15 @@ class Post < ApplicationRecord
     like_users.include?(user)
   end
 
+  def stock(user)
+    stocks.create(user_id: user.id)
+  end
+
+  def unstock(user)
+    stocks.find_by(user_id: user.id).destroy
+  end
+
+  def stock?(user)
+    stock_users.include?(user)
+  end
 end

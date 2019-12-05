@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :user_follow_relations, only: %i(create destroy)
   resources :likes, only: %i(create destroy)
+  resources :stocks, only: %i(index create destroy)
 end

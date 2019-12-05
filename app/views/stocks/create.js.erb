@@ -1,0 +1,1 @@
+$("#post-<%= @post.id %> .stock").html("<%= escape_javascript(render partial: 'stocks/stock', locals: { post: @post }) %>");

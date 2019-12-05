@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_01_114542) do
+ActiveRecord::Schema.define(version: 2019_12_05_142429) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -63,6 +63,16 @@ ActiveRecord::Schema.define(version: 2019_12_01_114542) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "stocks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_stocks_on_post_id"
+    t.index ["user_id", "post_id"], name: "index_stocks_on_user_id_and_post_id", unique: true
+    t.index ["user_id"], name: "index_stocks_on_user_id"
+  end
+
   create_table "user_follow_relations", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follow_id"
@@ -92,6 +102,8 @@ ActiveRecord::Schema.define(version: 2019_12_01_114542) do
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "stocks", "posts"
+  add_foreign_key "stocks", "users"
   add_foreign_key "user_follow_relations", "users"
   add_foreign_key "user_follow_relations", "users", column: "follow_id"
 end

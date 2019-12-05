@@ -15,6 +15,9 @@
     <div id="post-<%= @post.id %>">
       <%= render partial: 'likes/like', locals: { post: @post, like_count: @like_count } %>
     </div>
+    <div id="post-<%= @post.id %>">
+      <%= render partial: 'stocks/stock', locals: { post: @post } %>
+    </div>
     <div class="post-body" id="toc-range">
       <%= markdown(@post.body) %>
     </div>

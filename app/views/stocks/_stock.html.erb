@@ -1,0 +1,19 @@
+<% if current_user != post.user && user_signed_in? %>
+  <div class="stock">
+    <% if post.stock?(current_user) %>
+      <%= form_with model: post.stocks.find_by(user_id: current_user.id), method: :delete do |f| %>
+        <%= button_tag(class: "btn btn-primary unstock-btn") do %>
+          <i class="fas fa-heart"></i>
+        <% end %>
+      <% end %>
+    <% else %>
+    
+      <%= form_with model: post.stocks.build do |f| %>
+        <div><%= hidden_field_tag :post_id, post.id %></div>
+        <%= button_tag(class: "btn btn-outline-primary stock-btn") do %>
+          <i class="fas fa-thumbs-up"></i>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>

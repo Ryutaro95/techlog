@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :followers, through: :reverse_of_user_follow_relations, source: :user
 
   has_many :likes, dependent: :destroy
+  has_many :stocks, dependent: :destroy
   has_one_attached :image
 
 

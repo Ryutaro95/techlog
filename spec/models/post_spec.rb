@@ -130,4 +130,28 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe "ストック機能" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:other_user) { FactoryBot.create(:user) }
+
+    # stock(user)
+    context "ユーザーが記事をストックしたとき" do
+      it "ストックデータが追加されていること"
+    end
+
+    # unstock(user)
+    context "ユーザーが記事のストックを解除したとき" do
+      it "ストックデータが削除されていること"
+    end
+
+    # stock?(user)
+    context "既に記事をストックしているとき" do
+      it "trueであること"
+    end
+
+    context "記事をストックしていないとき" do
+      it "falseであること"
+    end
+  end
+
 end
