@@ -32,7 +32,7 @@ RSpec.describe UserFollowRelation, type: :model do
     end
   end
 
-  describe "アソシエーションテスト" do
+  describe "関連データの削除チェック" do
     let(:user) { FactoryBot.create(:user) }
     let(:other_user) { FactoryBot.create(:user) }
 

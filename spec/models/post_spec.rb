@@ -85,4 +85,49 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe "いいね機能" do
+    
+    let(:user) { FactoryBot.create(:user) }
+    let(:other_user) { FactoryBot.create(:user) }
+
+    # post_like(user)
+    context "ユーザーが他のユーザーの投稿にいいねしたとき" do
+      it "いいね数が1になっていること" do
+        post = FactoryBot.create(:post, user: other_user)
+        post.post_like(user)
+
+        expect(post.likes_count).to eq 1
+      end
+    end
+
+    # post_unlike(user)
+    context "ユーザーが他のユーザー投稿のいいねを解除したとき" do
+      it "いいね数が0になっていること" do
+        post = FactoryBot.create(:post, user: other_user)
+        post.post_like(user)
+        post.post_unlike(user)
+
+        expect(post.likes_count).to eq 0
+      end
+    end
+
+    # like?(user)
+    context "投稿にいいねされているとき" do
+      it "trueであること" do
+        post = FactoryBot.create(:post, user: other_user)
+        post.post_like(user)
+
+        expect(post.like?(user)).to be_truthy
+      end
+    end
+
+    context "投稿にいいねされていないとき" do
+      it "falseであること" do
+        post = FactoryBot.create(:post, user: other_user)
+
+        expect(post.like?(user)).to be_falsey
+      end
+    end
+  end
+
 end

@@ -1,6 +1,6 @@
 <% if current_user != post.user && user_signed_in? %>
   <div class="like">
-    <% if post.iine?(current_user) %>
+    <% if post.like?(current_user) %>
       <%= form_with model: post.likes.find_by(user_id: current_user.id), method: :delete do |f| %>
         <%= button_tag(class: "btn btn-primary unlike-btn") do %>
           <i class="fas fa-heart"></i>

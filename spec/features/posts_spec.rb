@@ -42,6 +42,7 @@ RSpec.feature "Posts", type: :feature do
       expect {
         find(".dropdown-toggle").click
         click_link "マイページ"
+        find(".us-myposts").click
         find(".btn-post-delete").click
         page.driver.browser.switch_to.alert.accept
 
@@ -66,6 +67,7 @@ RSpec.feature "Posts", type: :feature do
       find(".submit-post").click
       find(".dropdown-toggle").click
       click_link "マイページ"
+      find(".us-myposts").click
       find(".btn-post-edit").click
 
       fill_in "タイトル", with: "テストタイトルを編集"
