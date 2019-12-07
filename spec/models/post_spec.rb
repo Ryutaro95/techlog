@@ -130,27 +130,41 @@ RSpec.describe Post, type: :model do
     end
   end
 
-  describe "ストック機能" do
+  describe "ストック機能のメソッド動作チェック" do
     let(:user) { FactoryBot.create(:user) }
     let(:other_user) { FactoryBot.create(:user) }
+    let(:post) { FactoryBot.create(:post, user: other_user)}
 
     # stock(user)
     context "ユーザーが記事をストックしたとき" do
-      it "ストックデータが追加されていること"
+      it "ストックが追加されていること" do
+
+        expect{ post.stock(user) }.to change{ Stock.count }.by(1)
+      end
     end
 
     # unstock(user)
     context "ユーザーが記事のストックを解除したとき" do
-      it "ストックデータが削除されていること"
+      it "ストックが削除されていること" do
+        post.stock(user)
+
+        expect{ post.unstock(user) }.to change{ Stock.count }.by(-1)
+      end
     end
 
-    # stock?(user)
+    # stocked?(user)
     context "既に記事をストックしているとき" do
-      it "trueであること"
+      it "trueであること" do
+        post.stock(user)
+
+        expect(post.stocked?(user)).to be_truthy
+      end
     end
 
     context "記事をストックしていないとき" do
-      it "falseであること"
+      it "falseであること" do
+        expect(post.stocked?(user)).to be_falsey
+      end
     end
   end
 

@@ -1,17 +1,18 @@
 <% if current_user != post.user && user_signed_in? %>
   <div class="stock">
-    <% if post.stock?(current_user) %>
-      <%= form_with model: post.stocks.find_by(user_id: current_user.id), method: :delete do |f| %>
-        <%= button_tag(class: "btn btn-primary unstock-btn") do %>
-          <i class="fas fa-heart"></i>
+    <% if post.stocked?(current_user) %>
+      <%= form_with model: post.stocks.find_by(user_id: current_user.id), method: :delete, class: "form-unstock" do |f| %>
+        <%= button_tag(class: "btn btn-dark unstock-btn") do %>
+          <i class="fas fa-folder-minus"></i>
+          <span>ストック済み</span>
         <% end %>
       <% end %>
     <% else %>
-    
-      <%= form_with model: post.stocks.build do |f| %>
+      <%= form_with model: post.stocks.build, class: "form-stock" do |f| %>
         <div><%= hidden_field_tag :post_id, post.id %></div>
-        <%= button_tag(class: "btn btn-outline-primary stock-btn") do %>
-          <i class="fas fa-thumbs-up"></i>
+        <%= button_tag(class: "btn btn-outline-dark stock-btn") do %>
+          <i class="fas fa-folder-plus"></i>
+          <span>ストック</span>
         <% end %>
       <% end %>
     <% end %>

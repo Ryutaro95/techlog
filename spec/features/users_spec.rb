@@ -1,50 +1,65 @@
 require 'rails_helper'
 
 RSpec.feature "Users", type: :feature do
-  it "ログインする" do
-    user = FactoryBot.create(:user, name: "test_user", email: "test@test.com", password: "password")
-    
-    visit new_user_session_path
 
-    fill_in "メールアドレス", with: "test@test.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
-    expect(page).to have_content "ログインしました。"
-    expect(page).to have_link "#{user.name}"
+  let(:user) { FactoryBot.create(:user) }
+
+  describe "ログイン" do
+    context "メールアドレスとパスワードがあるとき" do
+      scenario "ログインできる" do
+        sign_in_as(user)
+
+        expect(page).to have_content "ログインしました。"
+        expect(page).to have_link user.name
+      end
+    end
+
+    context "メールアドレスがないとき" do
+      scenario "ログインできない" do
+        visit root_path
+        click_link "ログイン"
+        fill_in "メールアドレス", with: ""
+        fill_in "パスワード", with: user.password
+        click_button "ログイン"
+  
+        expect(page).to have_content "メールアドレスまたはパスワードが違います。"
+      end
+    end
+
+    context "パスワードがないとき" do
+      scenario "ログインできない" do
+        visit root_path
+        click_link "ログイン"
+        fill_in "メールアドレス", with: user.email
+        fill_in "パスワード", with: ""
+        click_button "ログイン"
+  
+        expect(page).to have_content "メールアドレスまたはパスワードが違います。"
+      end
+    end
   end
 
-  it "ログアウトする", js: true do
-    user = FactoryBot.create(:user, name: "test_user", email: "test@test.com", password: "password")
-    
-    visit new_user_session_path
-
-    fill_in "メールアドレス", with: "test@test.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
-
-    find(".dropdown-toggle").click
-    click_link "ログアウト"
-
-    expect(page).to have_content "ログアウトしました。"
-    expect(page).to have_link "ログイン"
-    expect(page).to have_link "アカウント作成"
+  describe "ログアウト" do
+    scenario "ログアウトボタンを押下してログアウトする", js: true do
+      sign_in_as(user)
+  
+      find(".dropdown-toggle").click
+      click_link "ログアウト"
+  
+      expect(page).to have_content "ログアウトしました。"
+      expect(page).to have_link "ログイン"
+      expect(page).to have_link "アカウント作成"
+    end
   end
 
-  it "ユーザーのマイページに遷移する", js: true do
-    user = FactoryBot.create(:user, name: "test_user", email: "test@test.com", password: "password")
-    
-    visit new_user_session_path
+  describe "ユーザー詳細ページ" do
+    scenario "マイページに遷移できる", js: true do
+      sign_in_as(user)
+      find(".dropdown-toggle").click
+      click_link "マイページ"
 
-    fill_in "メールアドレス", with: "test@test.com"
-    fill_in "パスワード", with: "password"
-    click_button "ログイン"
-
-    find(".dropdown-toggle").click
-
-    click_link "マイページ"
-
-    expect(page).to have_content ": #{user.name}"
-    expect(page).to have_content ": #{user.email}"
-
+      expect(page).to have_content ": #{user.name}"
+      expect(page).to have_content ": #{user.email}"
+    end
   end
 end

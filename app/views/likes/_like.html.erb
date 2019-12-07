@@ -6,6 +6,7 @@
           <i class="fas fa-heart"></i>
           <% if post.likes_count %>
             <span class="likes-count"><%= post.likes_count %></span>
+            <span class="tiptool">いいね済み</span>
           <% end %>
         <% end %>
       <% end %>
@@ -17,6 +18,7 @@
           <i class="fas fa-thumbs-up"></i>
           <% if post.likes_count %>
             <%= post.likes_count %>
+            <span class="tiptool">いいね</span>
           <% end %>
         <% end %>
       <% end %>

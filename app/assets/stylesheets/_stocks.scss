@@ -1,0 +1,38 @@
+// ストック
+
+.stock {
+
+
+  button {
+    position: relative;
+
+    i {
+      font-size: 22px;
+    }
+  }
+  // チップツール
+  .unstock-btn span,
+  .stock-btn span {
+    color: #fff;
+    background-color: #343a40;
+    display: none;
+    position: absolute;
+    bottom: -3rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 5px;
+  }
+
+  button:hover span {
+    display: inline-block;
+    width: 40%;
+    line-height: 35px;
+  }
+}
+
+// ストック一覧
+.stocks-index {
+  font-size: 24px;
+  margin-bottom: 2rem;
+}

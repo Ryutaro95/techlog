@@ -1,0 +1,7 @@
+<h2 class="stocks-index container"><i class="fas fa-folder-open"></i>ストック一覧</h2>
+
+<% unless @stock_posts.empty? %>
+  <%= render partial: 'partial/posts_index', locals: { posts: @stock_posts } %>
+<% else %>
+  <p class="container">ストック記事がありません</p>
+<% end %>
