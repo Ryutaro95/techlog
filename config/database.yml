@@ -14,7 +14,7 @@ default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: <%= ENV.fetch('MYSQL_USER') { 'root' } %>
-  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
+  password:
   host: db
 
 production:
@@ -27,6 +27,7 @@ production:
 development:
   <<: *default
   database: app_development
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -34,6 +35,7 @@ development:
 test:
   <<: *default
   database: app_test
+  password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
