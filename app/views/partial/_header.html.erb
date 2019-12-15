@@ -1,13 +1,43 @@
 <header>
   <nav class="global-nav navbar navbar-expand-lg">
     <div class="container justify-content-between">
-        <%= link_to "LOGO", root_path, class: "navbar-brand global-nav-logo" %>
+        <%= link_to "TECHLOG", root_path, class: "navbar-brand global-nav-logo" %>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon">
+
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+              <defs>
+                <style>
+                  .cls-1,
+                  .cls-2 {
+                    fill: none;
+                  }
+
+                  .cls-2 {
+                    stroke: #fff;
+                    stroke-linecap: round;
+                    stroke-linejoin: round;
+                    stroke-width: 4px;
+                  }
+                </style>
+              </defs>
+              <title>bars_24</title>
+              <g id="レイヤー_2" data-name="レイヤー 2">
+                <g id="Rect_最後透明に_" data-name="Rect（最後透明に）">
+                  <rect class="cls-1" width="48" height="48" />
+                </g>
+                <g id="icon">
+                  <line class="cls-2" x1="10" y1="12" x2="38" y2="12" />
+                  <line class="cls-2" x1="10" y1="24" x2="38" y2="24" />
+                  <line class="cls-2" x1="10" y1="36" x2="38" y2="36" />
+                </g>
+              </g>
+            </svg>
+          </span>
         </button>
   
       <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-        <ul class="navbar-nav">
+        <ul class="navbar-nav navbar-links">
           <% if user_signed_in? %>
           <%= link_to new_post_path, class: "btn-outline-light btn posts-new" do %>
             <i class='fas fa-pen'></i> 記事投稿

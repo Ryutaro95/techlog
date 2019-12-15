@@ -11,6 +11,10 @@
   }
 }
 
+.dropdown-menu p {
+  text-align: center;
+}
+
 .validates-error-messages {
   color: red;
   list-style: none;
@@ -19,4 +23,23 @@
 .h-sign-in-btn,
 .h-sign-up-btn {
   margin-right: 10px;
+}
+
+
+@media (max-width: 890px) {
+  .navbar-toggler {
+    border: 1px solid #fff;
+    margin-bottom: 15px;
+  }
+  
+  .navbar-links a {
+    width: 100%;
+  }
+  .navbar-links input {
+    width: 100%;
+  }
+  .h-sign-in-btn {
+    margin: 5px 0;
+  }
+
 }

@@ -17,6 +17,13 @@ default: &default
   password:
   host: db
 
+# production:
+#   <<: *default
+#   # host: <%= Rails.application.credentials.rds[:host] %>
+#   database: app_production
+#   # username: <%= Rails.application.credentials.rds[:username] %>
+#   password: <%= ENV.fetch('MYSQL_PASSWORD') { 'password' } %>
+
 production:
   <<: *default
   host: <%= Rails.application.credentials.rds[:host] %>
