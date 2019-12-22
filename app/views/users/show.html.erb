@@ -14,7 +14,10 @@
           <p><%= @user.profile %></p>
         </div>
       <% end %>
-      <%= link_to "編集", edit_user_registration_path %>
+
+      <% if current_user == @user %>
+        <%= link_to "編集", edit_user_registration_path %>
+      <% end %>
     </div>
 
     <% if @user.followings %>
