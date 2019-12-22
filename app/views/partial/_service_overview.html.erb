@@ -1,0 +1,13 @@
+<div class="overview">
+  <div class="overview-content container">
+    <h2>TECHLOGとは</h2>
+    <p>ITエンジニアリングに関する知識や情報の共有はもちろん<br>エンジニアリングを通して日々感じたことや考えを書き残すことができるブログサービスです。<br>ITエンジニアとしての知見を日々更新していきましょう。</p>
+    <hr>
+    <p>「かんたんログイン」ボタンをクリックすることでユーザー登録することなくTECHLOGを体験することができます。</p>
+    <%= form_with model: User.new, url: new_user_session_path do |f| %>
+      <%= f.hidden_field :email, value: "kantan@user.com" %>
+      <%= f.hidden_field :password, value: "password" %>
+      <%= f.submit "かんたんログイン", class:"btn btn-outline-primary mr-2"%>
+    <% end %>
+  </div>
+</div>
