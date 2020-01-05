@@ -1,24 +1,49 @@
-# README
+# TECHLOG
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ITエンジニアリングに関する知識や情報の共有はもちろん、エンジニアリングを通して日々感じたことや考えを書き残すことができるブログサービスです。
 
-Things you may want to cover:
+<br>
 
-* Ruby version
 
-* System dependencies
 
-* Configuration
+## 機能一覧
+---
+- ログイン機能(Devise)
+- ユーザー情報編集
+- ユーザープロフィール画像
+- ブログ記事 投稿 / 削除 / 編集 / 詳細
+  - Markdown記法対応
+  - コードをシンタックスハイライトで色分け
+- コメント機能 投稿 / 削除
+  - コメントの投稿/削除をAjaxで実装
+- いいね機能 / いいね解除
+  - いいね / いいね解除ボタンをAjaxで実装
+- 記事ストック機能 / ストック解除 / ストック記事一覧
+  - 記事ストック / 解除ボタンをAjaxで実装
+- ユーザーフォロー / フォロー解除 / 一覧
+  - フォロー / フォロー解除ボタンをAjaxで実装
+- ページネーション(kaminari)
+- RSpec で単体テスト / 統合テストを実装
 
-* Database creation
 
-* Database initialization
+<br>
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+## 使用技術
+---
+### バックエンド
+- Ruby 2.6.5
+- Ruby on Rails 5.2.3
+- MySQL 5.7
+- Docker
+- Docker-compose
+- Nginx
+- RSpec
+- AWS(EC2, RDS, ALB)
+- puma
 
-* Deployment instructions
 
-* ...
+### フロントエンド
+- Sass
+- Bootstrap
+- jQuery
