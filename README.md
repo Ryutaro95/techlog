@@ -5,6 +5,13 @@ ITエンジニアリングに関する知識や情報の共有はもちろん、
 <br>
 
 
+## デモ
+
+[http://techlog-316940954.ap-northeast-1.elb.amazonaws.com/](http://techlog-316940954.ap-northeast-1.elb.amazonaws.com/)
+
+かんたんログイン機能を実装しているため、ユーザー登録することなくTECHLOGを体験することができます。
+
+<br>
 
 ## 機能一覧
 - ログイン機能(Devise)
@@ -34,7 +41,7 @@ ITエンジニアリングに関する知識や情報の共有はもちろん、
 - Ruby on Rails 5.2.3
 - MySQL 5.7
 - Docker
-- Docker-compose
+- docker-compose
 - Nginx
 - RSpec
 - AWS(EC2, RDS, ALB)
