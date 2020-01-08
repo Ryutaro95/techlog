@@ -1,9 +1,9 @@
 class StocksController < ApplicationController
-  before_action :authenticate_user!, only: %i(index create destroy)
-
+  before_action :authenticate_user!
   def index
-    stock_posts = Stock.get_stock_posts(current_user)
-    @stock_posts = Kaminari.paginate_array(stock_posts).page(params[:page]).per(10)
+    # ログインユーザーがストックしている記事一覧を取得して10件単位でページネーション
+    @stock_posts = Kaminari.paginate_array(current_user.stocks.map(&:post))
+    .page(params[:page]).per(10)
   end
 
   def create

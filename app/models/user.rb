@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :reverse_of_user_follow_relations, class_name: 'UserFollowRelation', foreign_key: 'follow_id', dependent: :destroy
   has_many :followers, through: :reverse_of_user_follow_relations, source: :user
   has_many :likes, dependent: :destroy
-  has_many :stocks, dependent: :destroy
+  has_many :stocks, -> { order('created_at DESC') }, dependent: :destroy
 
   has_one_attached :image
 

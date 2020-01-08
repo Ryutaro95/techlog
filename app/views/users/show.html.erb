@@ -6,6 +6,8 @@
       <% else %>
         <%= image_tag 'noimage.png', class: "user-details-img" %>
       <% end %>
+
+      <!-- フォローボタン -->
       <%= render partial: 'partial/follow_btn', locals: { user: @user } %>
       <p><i class="fas fa-user"></i> : <%= @user.name %></p>
       <p><i class="fas fa-envelope"></i> : <%= @user.email %></p>
