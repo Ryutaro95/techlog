@@ -11,8 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
-    user = current_user
-    @post = user.posts.build(post_params)
+    @post = current_user.posts.build(post_params)
 
     if @post.save
       flash[:notice] = "記事を投稿しました"
@@ -25,7 +24,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = Comment.where(post_id: @post.id).page(params[:page]).per(5).order(created_at: :desc)
+    @comments = @post.comments.page(params[:page]).per(5).order(created_at: :desc)
   end
 
   def edit
