@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
     if @post.save
       flash[:notice] = "記事を投稿しました"
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render 'new'
     end
