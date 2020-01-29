@@ -15,7 +15,7 @@ RSpec.feature "Posts", type: :feature do
           find(".submit-post").click
         }.to change(user.posts, :count).by(1)
         expect(page).to have_content "記事を投稿しました"
-        expect(page).to have_link "テスト記事を作成"
+        expect(page).to have_content "テスト記事の本文を記入する場所です"
         expect(page).to have_link "#{user.name}"
       end
     end
