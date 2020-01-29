@@ -30,6 +30,7 @@ RSpec.describe Tag, type: :model do
       it "有効な状態であること" do
         expect(tag).to be_valid
       end
+
       it "タグが作成されること" do
         expect{ tag.save }.to change{ Tag.count }.by(1)
       end
@@ -47,6 +48,34 @@ RSpec.describe Tag, type: :model do
 
         expect(tag.errors[:name]).to include("はすでに存在します")
       end
+    end
+
+    # downcase_tag_name
+    describe "受け取ったタグ名をすべて小文字に変換" do
+      context "タグ名が大文字のとき" do
+        it "すべて小文字で保存されていること" do
+          downcase_tag = Tag.create(name: "TEST_TAG")
+
+          expect(downcase_tag.reload.name).to eq "test_tag"
+        end
+      end
+
+      context "タグ名が小文字のとき" do
+        it "すべて小文字で保存されていること" do
+          downcase_tag = Tag.create(name: "test_tag")
+
+          expect(downcase_tag.reload.name).to eq "test_tag"
+        end
+      end
+
+      context "タグ名が大文字と小文字があるとき" do
+        it "すべて小文字で保存されていること" do
+          downcase_tag = Tag.create(name: "TesT_tAG")
+
+          expect(downcase_tag.reload.name).to eq "test_tag"
+        end
+      end
+
     end
   end
 
@@ -71,6 +100,4 @@ RSpec.describe Tag, type: :model do
       end
     end
   end
-
-
 end
