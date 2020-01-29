@@ -5,6 +5,11 @@
       <%= f.label :title, "タイトル" %>
       <%= f.text_field :title, class: "f-post-title-input", placeholder: "タイトル", autocomplete: "off" %>
     </div>
+
+    <div class="f-post-title">
+      <%= f.label :tag_names, "タグ" %>
+      <%= f.text_field :tag_names, class: "f-post-title-input", placeholder: "タグ名を Ruby, Rails, Docker のようにカンマ区切りで入力してください", autocomplete: "off" %>
+    </div>
   
     <div class="f-post-body">
       <%= f.label :body, "本文" %>

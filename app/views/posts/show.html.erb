@@ -12,6 +12,9 @@
     <% unless @post.created_at == @post.updated_at %>
       <p><%= @post.updated_at.to_s(:date_jp) %>に更新</p>
     <% end %>
+    <% @post.tags.each do |tag| %>
+      <p># <%= tag.name %></p><br>
+    <% end %>
     <div class="post-buttons">
       <div class="post-button like-button" id="post-<%= @post.id %>">
         <%= render partial: 'likes/like', locals: { post: @post, like_count: @like_count } %>

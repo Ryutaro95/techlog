@@ -12,8 +12,9 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(post_params)
-
     if @post.save
+      tag_list = tag_params[:tag_names].delete(" ").split(",")
+      @post.save_tags(tag_list)
       flash[:notice] = "記事を投稿しました"
       redirect_to post_path(@post)
     else
@@ -46,6 +47,10 @@ class PostsController < ApplicationController
 
     def post_params
       params.require(:post).permit(:title, :body)
+    end
+
+    def tag_params
+      params.require(:post).permit(:tag_names)
     end
 
     def correct_user
