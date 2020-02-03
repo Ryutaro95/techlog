@@ -35,6 +35,8 @@ class Post < ApplicationRecord
     stocked_users.include?(user)
   end
 
+  # 受け取ったタグがDBに存在すれば、取得して記事と紐付ける
+  # 存在しなければ、作成する
   def save_tags(tag_list)
     tag_list.each do |tag|
       unless find_tag = Tag.find_by(name: tag.downcase)
