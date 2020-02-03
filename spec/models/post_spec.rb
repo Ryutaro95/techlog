@@ -168,4 +168,32 @@ RSpec.describe Post, type: :model do
     end
   end
 
+  describe "タグ付け機能チェック" do
+    let(:user) { FactoryBot.create(:user) }
+    let(:post) { FactoryBot.create(:post, user: user)}
+    # save_tags()
+    context "同名のタグが既にDBに存在するとき" do
+      let!(:tag) { FactoryBot.create(:tag) }
+
+      it "作成されないこと" do
+        expect{ post.save_tags( ["rspec"] ) }.to change{ Tag.count }.by(0)
+      end
+
+      it "記事とタグが紐付いて作成されること" do
+        expect{ post.save_tags( ["rspec"] ) }.to change{ PostTagRelation.count }.by(1)
+      end
+    end
+
+    context "同名のタグがDBに存在しないとき" do
+      it "タグが作成されること" do
+        expect{ post.save_tags( ["rspec"] ) }.to change{ Tag.count }.by(1)
+      end
+
+      it "記事とタグが紐付いて作成されていること" do
+        expect{ post.save_tags( ["rspec"] ) }.to change{ PostTagRelation.count }.by(1)
+      end
+    end
+
+  end
+
 end
