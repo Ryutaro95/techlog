@@ -13,8 +13,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      tag_list = tag_params[:tag_names].delete(" ").split(",")
-      @post.save_tags(tag_list)
+      @post.save_tags(tag_params[:tag_names])
       flash[:notice] = "記事を投稿しました"
       redirect_to post_path(@post)
     else

@@ -37,9 +37,11 @@ class Post < ApplicationRecord
 
   # 受け取ったタグがDBに存在すれば、取得して記事と紐付ける
   # 存在しなければ、作成する
-  def save_tags(tag_list)
+  def save_tags(tags)
+    # 文字列を空白区切りで配列化
+    tag_list = tags.split(/[[:blank:]]+/).select(&:present?)
     tag_list.each do |tag|
-      unless find_tag = Tag.find_by(name: tag.downcase)
+      unless find_tag = Tag.find_by(name: tag)
         begin
           self.tags.create!(name: tag)
         rescue
