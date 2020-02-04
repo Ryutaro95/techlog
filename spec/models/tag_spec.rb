@@ -10,6 +10,7 @@ RSpec.describe Tag, type: :model do
         expect(tag).to be_valid
       end
     end
+
     context "タグ名が無いとき" do
       it "無効な状態であること" do
         invalid_tag = Tag.new(name: "")
@@ -35,6 +36,7 @@ RSpec.describe Tag, type: :model do
         expect{ tag.save }.to change{ Tag.count }.by(1)
       end
     end
+
     context "既にタグ名が存在するとき" do
       it "無効な状態であること" do
         Tag.create(name: "tagname")
@@ -48,34 +50,37 @@ RSpec.describe Tag, type: :model do
 
         expect(tag.errors[:name]).to include("はすでに存在します")
       end
-    end
 
-    # downcase_tag_name
-    describe "受け取ったタグ名をすべて小文字に変換" do
-      context "タグ名が大文字のとき" do
-        it "すべて小文字で保存されていること" do
-          downcase_tag = Tag.create(name: "TEST_TAG")
+      context "同じ文字列で大文字が既に作成されているとき" do
+        it "無効な状態であること" do
+          Tag.create(name: "TAGNAME")
 
-          expect(downcase_tag.reload.name).to eq "test_tag"
+          expect(tag).to be_invalid
+        end
+
+        it "バリデーションエラーメッセージが表示されること" do
+          Tag.create(name: "TAGNAME")
+          tag.valid?
+
+          expect(tag.errors[:name]).to include("はすでに存在します")
         end
       end
 
-      context "タグ名が小文字のとき" do
-        it "すべて小文字で保存されていること" do
-          downcase_tag = Tag.create(name: "test_tag")
+      context "同じ文字列で小文字で既に作成されているとき" do
+        it "無効な状態であること" do
+          Tag.create(name: "tagname")
 
-          expect(downcase_tag.reload.name).to eq "test_tag"
+          expect(Tag.new(name: "TAGNAME")).to be_invalid
+        end
+
+        it "バリデーションエラーメッセージが表示されること" do
+          Tag.create(name: "tagname")
+          upcase_tag = Tag.new(name: "TAGNAME")
+          upcase_tag.valid?
+
+          expect(upcase_tag.errors[:name]).to include("はすでに存在します")
         end
       end
-
-      context "タグ名が大文字と小文字があるとき" do
-        it "すべて小文字で保存されていること" do
-          downcase_tag = Tag.create(name: "TesT_tAG")
-
-          expect(downcase_tag.reload.name).to eq "test_tag"
-        end
-      end
-
     end
   end
 
