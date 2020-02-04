@@ -1,0 +1,30 @@
+// 記事詳細
+.f-tag {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+
+  label {
+    opacity: 0;
+  }
+
+  &-input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #cccccc;
+
+    &::placeholder {
+      color: #b8b8b8;
+    }
+  }
+
+  &-input:focus {
+    outline: 0;
+  }
+}
+
+
+// 記事作成フォーム
+.tag-name {
+  font-size: 15px;
+}

@@ -13,7 +13,7 @@
       <p><%= @post.updated_at.to_s(:date_jp) %>に更新</p>
     <% end %>
     <% @post.tags.each do |tag| %>
-      <p># <%= tag.name %></p><br>
+      <span class="badge badge-dark tag-name"># <%= tag.name %></span>
     <% end %>
     <div class="post-buttons">
       <div class="post-button like-button" id="post-<%= @post.id %>">
