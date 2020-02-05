@@ -32,6 +32,7 @@ class PostsController < ApplicationController
   
   def update
     @post.update(post_params)
+    @post.save_tags(tag_params[:tag_names])
     flash[:notice] = "「#{@post.title}」を更新しました"
     redirect_to post_path
   end

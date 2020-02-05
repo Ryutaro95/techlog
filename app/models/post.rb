@@ -48,7 +48,7 @@ class Post < ApplicationRecord
           nil
         end
       else
-        PostTagRelation.create!(post_id: self.id, tag_id: find_tag.id)
+        PostTagRelation.create(post_id: self.id, tag_id: find_tag.id)
       end
     end
   end
