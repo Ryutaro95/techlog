@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   resources :users, only: %i(show)
   resources :posts do
     resources :comments, only: %i(create destroy)
-    collection { get "search" }
   end
   resources :user_follow_relations, only: %i(create destroy)
   resources :likes, only: %i(create destroy)

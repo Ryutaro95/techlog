@@ -46,12 +46,6 @@ class PostsController < ApplicationController
     redirect_back fallback_location: root_path
   end
 
-  def search
-    posts = Tag.search(params[:search])
-    @posts = Post.where(id: posts.map(&:ids).join(",").split(",")).page(params[:page]).per(10).order(updated_at: :desc)
-    render 'index'
-  end
-
   private
 
     def post_params
