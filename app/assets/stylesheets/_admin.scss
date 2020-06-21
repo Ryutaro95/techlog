@@ -1,0 +1,21 @@
+.admin-page {
+  background: #fff;
+
+  .users-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    .user-container {
+      width: 45%;
+
+      .user-item {
+        
+        img.user-details-img {
+          margin: 0;
+          display: inline-block;
+        } // .user-details-img
+      } // .user-item
+    } // .user-container
+  } // .users-list
+} // .admin-page
