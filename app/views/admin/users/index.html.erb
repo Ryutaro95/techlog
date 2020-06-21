@@ -1,10 +1,14 @@
-<div class="admin-users-list container">
-  <% @users.each do |user| %>
-    <%= user.name %>
-    <%= user.email %>
-    <%= user.profile %>
-    <%= user.admin %>
-  <% end %>
+<div class="admin-page container">
+  <ul class="users-list">
+    <% @users.each do |user| %>
+      <% unless user.admin? %>
+        <%= render partial: 'partial/profile_image', locals: { user: user } %>
+        <li class="user-item"><%= user.name %></li>
+        <li class="user-item"><%= user.email %></li>
+        <li class="user-item"><%= user.profile %></li>
+      <% end %>
+    <% end %>
+  </ul>
 </div>
 
 
