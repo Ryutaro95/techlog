@@ -1,0 +1,13 @@
+<div class="admin-users-list container">
+  <% @users.each do |user| %>
+    <%= user.name %>
+    <%= user.email %>
+    <%= user.profile %>
+    <%= user.admin %>
+  <% end %>
+</div>
+
+
+<div class="paginate">
+  <%= paginate @users %>
+</div>
