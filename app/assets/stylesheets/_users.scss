@@ -84,6 +84,12 @@
     .us-following-posts.active {
       display: block;
     }
+
+    .us-following-posts {
+      .user-following-noposts {
+        padding: 20px;
+      }
+    }
   }
 }
 

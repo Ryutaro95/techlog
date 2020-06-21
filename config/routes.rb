@@ -4,6 +4,10 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users, only: %i(show)
+
+  namespace :admin do
+    resources :users, except: %i(new create edit update)
+  end
   resources :posts do
     resources :comments, only: %i(create destroy)
   end
