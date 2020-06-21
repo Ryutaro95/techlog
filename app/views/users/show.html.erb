@@ -31,15 +31,20 @@
 
   <div class="us-contents">
     <div class="us-posts-switch">
-      <div class="us-timeline" id="timeline-tab">タイムライン</div>
+      <% if current_user == @user %>
+        <div class="us-timeline" id="timeline-tab">タイムライン</div>
+      <% end %>
       <div class="us-myposts active" id="myposts-tab"><%= @user.name %>さんの記事</div>
     </div>
     <div class="us-my-posts active" id="myposts">
       <%= render partial: 'user_posts', locals: { posts: @posts, user: @user } %>
     </div>
-    <div class="us-following-posts" id="followinguser-posts">
-      <%= render partial: 'following_posts', locals: { following_posts: @following_posts, user: @user } %>
-    </div>
+
+    <% if current_user == @user %>
+        <div class="us-following-posts" id="followinguser-posts">
+          <%= render partial: 'following_posts', locals: { following_posts: @following_posts, user: @user } %>
+        </div>
+    <% end %>
   </div>
   
 </div>
