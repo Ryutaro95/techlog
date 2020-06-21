@@ -15,7 +15,7 @@
             </p>
           </div>
           <div class="user-posts-btns">
-            <% if current_user == user %>
+            <% if current_user == user || current_user.admin? %>
               <%= link_to "編集", edit_post_path(post.id), class: "btn btn-outline-success btn-post-edit" %>
               <%= link_to "削除", post_path(post.id), class: "btn btn-outline-danger btn-post-delete", method: :delete, data: { confirm: "「#{post.title}」を削除してよろしいですか？" } %>
             <% end %>
