@@ -3,8 +3,9 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
-  resources :users, only: %i(show)
+  resources :users, only: %i(show destroy)
 
+  get '/admin/deleted', to: 'users#deleted_user', as: 'deleted_user'
   namespace :admin do
     resources :users, except: %i(new create edit update)
   end

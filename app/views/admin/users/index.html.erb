@@ -7,7 +7,7 @@
           <li class="user-item"><%= user.name %></li>
           <li class="user-item"><%= user.email %></li>
         </div>
-        <%= link_to "削除", user_registration_path(user.id), class: "btn btn-outline-danger btn-post-delete", method: :delete, data: { confirm: "「#{user.name}」を完全に消去してよろしいですか？" } %>
+        <%= link_to "削除", user_path(user.id), class: "btn btn-outline-danger btn-post-delete", method: :delete, data: { confirm: "「#{user.name}」を完全に消去してよろしいですか？" } %>
       </div>
     <% end %>
   </ul>

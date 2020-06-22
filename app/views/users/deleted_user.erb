@@ -1,0 +1,10 @@
+<h1>凍結ユーザー一覧</h1>
+<ul>
+  <% @deleted_users.each do |user| %>
+    <li><%= user.name %></li>
+    <li><%= user.email %></li>
+    <li><%= user.profile %></li>
+    <li><%= user.deleted_at.to_s(:date_jp) %>に凍結しました</li>
+  <% end %>
+</ul>
+  
