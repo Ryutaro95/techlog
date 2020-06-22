@@ -1,11 +1,18 @@
-<div class="admin-users-list container">
-  <% @users.each do |user| %>
-    <%= user.name %>
-    <%= user.email %>
-    <%= user.profile %>
-    <%= user.admin %>
-  <% end %>
+<div class="admin-page container">
+  <ul class="users-list">
+    <% @users.each do |user| %>
+      <div class="user-container">
+        <li class="user-item"><%= render partial: 'partial/profile_image', locals: { user: user } %></li>
+        <div class="user-info">
+          <li class="user-item"><%= user.name %></li>
+          <li class="user-item"><%= user.email %></li>
+        </div>
+        <%= link_to "削除", user_path(user.id), class: "btn btn-outline-danger btn-post-delete", method: :delete, data: { confirm: "「#{user.name}」を完全に消去してよろしいですか？" } %>
+      </div>
+    <% end %>
+  </ul>
 </div>
+
 
 
 <div class="paginate">

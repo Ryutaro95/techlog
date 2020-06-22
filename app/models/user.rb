@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :stocks, -> { order('created_at DESC') }, dependent: :destroy
 
   has_one_attached :image
+  acts_as_paranoid
 
   validates :name, presence: true, length: { maximum: 20 }
   validates :email, length: { maximum: 255 }

@@ -26,7 +26,14 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # DELETE /resource
   # def destroy
-  #   super
+  #   if current_user.admin?
+  #     flash[:alert] = "管理者ユーザーは削除できません"
+  #     redirect_to admin_users_path
+  #   else
+  #     super
+  #     # user = User.find(params[:id])
+  #     # user.destroy
+  #   end
   # end
 
   # GET /resource/cancel

@@ -3,13 +3,7 @@
     <% posts.each do |post| %>
       <div class="post-list-content posts-content">
         <div class="posts-user-imgs">
-          <%= link_to user_path(post.user.id) do %>
-            <% if post.user.image.attached? %>
-              <%= image_tag post.user.thumbnail, class: "user-details-img" %>
-            <% else %>
-              <%= image_tag 'noimage.png', class: "user-details-img" %>
-            <% end %>
-          <% end %>
+          <%= render partial: 'partial/profile_image', locals: { user: post.user } %>
         </div>
         <div class="post-items">
           <li><%= link_to post.title, post, class: "h3" %></li>
