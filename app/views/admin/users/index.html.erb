@@ -3,12 +3,16 @@
     <% @users.each do |user| %>
       <div class="user-container">
         <li class="user-item"><%= render partial: 'partial/profile_image', locals: { user: user } %></li>
-        <li class="user-item"><%= user.name %></li>
-        <li class="user-item"><%= user.email %></li>
+        <div class="user-info">
+          <li class="user-item"><%= user.name %></li>
+          <li class="user-item"><%= user.email %></li>
+        </div>
+        <%= link_to "削除", user_registration_path(user.id), class: "btn btn-outline-danger btn-post-delete", method: :delete, data: { confirm: "「#{user.name}」を完全に消去してよろしいですか？" } %>
       </div>
     <% end %>
   </ul>
 </div>
+
 
 
 <div class="paginate">
