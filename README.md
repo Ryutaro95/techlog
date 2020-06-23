@@ -9,6 +9,8 @@ ITエンジニアリングに関する知識や情報の共有はもちろん、
 
 [http://techlog-316940954.ap-northeast-1.elb.amazonaws.com/](http://techlog-316940954.ap-northeast-1.elb.amazonaws.com/)
 
+![](https://user-images.githubusercontent.com/45044320/85442859-99b53680-b5cb-11ea-8638-67d70524acf4.png)
+
 かんたんログイン機能を実装しているため、ユーザー登録することなくTECHLOGを体験することができます。
 
 <br>
@@ -42,11 +44,7 @@ ITエンジニアリングに関する知識や情報の共有はもちろん、
 - MySQL 5.7
 - Docker
 - docker-compose
-- Nginx
 - RSpec
-- AWS(EC2, RDS, ALB)
-- puma
-
 
 ### フロントエンド
 - Sass
