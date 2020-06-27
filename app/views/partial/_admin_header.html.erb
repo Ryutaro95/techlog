@@ -1,0 +1,11 @@
+<% if user_signed_in? && current_user.admin? %>
+  <div class="admin-header bg-white text-dark">
+    <nav class="navbar navbar-expand-lg justify-content-between container">
+      <h1>管理者メニュー</h1>
+      <ul class="r-menu-list d-flex">
+        <li><%= link_to "ユーザー一覧", admin_users_path %></li>
+        <li><%= link_to "凍結ユーザー一覧", deleted_user_path %></li>
+      </ul>
+    </nav>
+  </div>
+<% end %>
